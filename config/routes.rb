@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :links
+  resources :links do
+    resources :comments 
+  end
   get 'designs/home'
 
   get 'designs/profile'
