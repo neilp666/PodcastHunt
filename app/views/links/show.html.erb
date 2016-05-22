@@ -16,6 +16,8 @@
 </p>
 
 
+
+
     <% if current_user %>
     <h2>
     Leave a comment
@@ -27,5 +29,13 @@
        <%= f.submit %>
 
     <% end %> 
-    <% end %>
+  <% end %>
 
+<% if @link.comments %>
+<h2>
+  Comments:
+</h2>
+
+<%= render @link.comments %>
+
+<% end %>

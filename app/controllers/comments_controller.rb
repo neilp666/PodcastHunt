@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
       @link = Link.find(params[:link_id])
       @comment = @link.comments.new(comment_params)
 
-      @comment.user_id = current_user.user_id
+      @comment.user_id = current_user.id
       @comment.save
 
       redirect_to link_path(@link), :flash => { :success => "Your comment has been saved" }

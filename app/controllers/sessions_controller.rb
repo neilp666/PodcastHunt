@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
   end
 
     session[:user_id] = user.id
-    redirect_to root_url, notice: "Signed In"
+    redirect_to session[:return_to], notice: "Signed In"
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Signed Out"
+    redirect_to session[:return_to], notice: "Signed Out"
   end
 end

@@ -7,5 +7,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_user
+  def return_to
+    session[:return_to] = request.env['PATH_INFO']
+  end
+
+  helper_method :current_user, :return_to
 end
