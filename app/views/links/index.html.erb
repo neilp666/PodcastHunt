@@ -1,33 +1,21 @@
 <div class="main-body" >
+  <% @link_days.keys.sort { |a,b| b <=> a }.each do |day| %>
+  <div class="links-list" > 
 
-  <div class="links-list" >     
-    <h3 class="day-date" >Today <small>SEPTEMBER 3RD</small></h3>
- 
-     <% @links.each do |link| %>
+    
+    <h3 class="day-date">
+        <% if day.strftime('%e') == Date.today.strftime('%e') %>
+          <%= 'Today' %><small> <%= "#{day.to_formatted_s(:month_and_day)} "%></small>
 
-    <div class="link-item" >
-      <div class="row">
-        <div class="col-xs-1"> </div>
-        <div class="col-xs-1">
-            <a class="upvote" href="#" >
-              <span class="upvote-button" >
-              <span class="glyphicon glyphicon-chevron-up" ></span>
-              </span> 
-              <span class="upvote-count" >32</span>
-            </a>
-        </div>
-        <div class="col-xs-7">
-          <a class="link-item-title" href="<%= link.url %>"><%= link.title %></a>
-          <span class="link-item-tagline" ><%= link.subtitle %></span>
-        </div>
-        <div class="col-xs-1"><span class="image" ><%= image_tag link.user.image, width: "40px;", height: "40px;" %></span></div>
-        <div class="col-xs-2" > <span class="comment-count" ><span class=" glyphicon glyphicon-comment" > </span> 8</span> </div>
-        <!-- <div class="col-xs-1"> <span class="comment-count" >8</span> </div> -->
-       
-      </div>
-      
-    </div>
+        <% else %>
+          <%= "#{day.strftime('%A')}" %> <small><%= "#{day.to_formatted_s(:month_and_day)} "%></small>
+        <% end %>
+        </h3>
+
+   
+     </div>
     <% end %>
+  
   </div>
 
 
@@ -35,34 +23,6 @@
 
 
 
-<h1>Listing Links</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Subtitle</th>
-      <th>Url</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @links.each do |link| %>
-      <tr>
-  
-        <td></td>
-        <td><%= link.url %></td>
-        <td><%= link.user_id %></td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 

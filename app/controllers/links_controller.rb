@@ -4,7 +4,8 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.all.order("created_at DESC")
+    @link_days = @links.group_by { |t| t.created_at.beginning_of_day }
   end
 
   # GET /links/1
