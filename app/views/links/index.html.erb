@@ -12,6 +12,39 @@
         <% end %>
         </h3>
 
+  <% for link in @link_days[day] %>
+
+    <div class="link-item" >
+      <div class="row">
+        <div class="col-xs-1"> </div>
+        <div class="col-xs-1">
+            <a class="upvote" href="#" >
+              <span class="upvote-button" >
+              <span class="glyphicon glyphicon-chevron-up" ></span>
+              </span> 
+              <span class="upvote-count" >32</span>
+            </a>
+        </div>
+        <div class="col-xs-7">
+          <a class="link-item-title" href="<%= link.url %>"><%= link.title %></a>
+          <span class="link-item-tagline" ><%= link.subtitle %></span>
+        </div>
+        <div class="col-xs-1"><span class="image" ><%= image_tag link.user.image, width: "40px;", height: "40px;" %></span></div>
+        <div class="col-xs-2" > 
+
+          <%= link_to(link) do %>
+          <span class="comment-count" ><span class=" glyphicon glyphicon-comment" > </span> <%= link.comments.count %></span>
+          <% end %>
+
+
+           </div>
+        <!-- <div class="col-xs-1"> <span class="comment-count" >8</span> </div> -->
+       
+      </div>
+      
+    </div>
+    <% end %>
+
    
      </div>
     <% end %>

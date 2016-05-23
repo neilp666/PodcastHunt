@@ -1,8 +1,17 @@
 <% if comment.user %>
-
-<p><strong><%= comment.user.name %></strong></p>
-
-<p><%= comment.body %></p>
-
-<% end %>
+<div class="comments-block " >
+            <div class="hidden-xs  col-sm-1">
+              <span class="image" ><%= image_tag comment.user.image, width: "40px;", height: "40px;" %></span>
+            </div>
+        
+            <div class="  col-xs-12  col-sm-11" >
+            <p>
+              <span class="small-bottom-padding" ><strong><%= comment.user.name %></strong></span>
+              <span class="small-bottom-padding" ><%= comment.body %></span>
+              <span><small> <a href="#"><span class="glyphicon glyphicon-chevron-up" ></span>  UPVOTE</a></small></span>
+            </p>
+            </div>
+            <div class="col-xs-12 pad-bot-big" ></div>
+        </div>
+  <% end %>
 
