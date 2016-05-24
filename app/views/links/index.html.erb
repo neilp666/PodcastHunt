@@ -29,7 +29,12 @@
           <a class="link-item-title" href="<%= link.url %>"><%= link.title %></a>
           <span class="link-item-tagline" ><%= link.subtitle %></span>
         </div>
-        <div class="col-xs-1"><span class="image" ><%= image_tag link.user.image, width: "40px;", height: "40px;" %></span></div>
+        <div class="col-xs-1"><%= link_to(link.user.handle) do %>
+
+          <span class="image"><%= image_tag link.user.image, width: "40px;", height: "40px;" %></span>
+
+          <% end %>
+        </div>
         <div class="col-xs-2" > 
 
           <%= link_to(link) do %>
