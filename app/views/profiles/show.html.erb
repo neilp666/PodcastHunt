@@ -10,14 +10,15 @@
 
       <div class="col-sm-10" >
         <h1><%= @user.name %></h1>
-        <h4><%= link_to (@user.handle, "http://www.twitter.com/#{@user.handle}") %></h4>
+        <h4><%= link_to "http://www.twitter.com/#{@user.handle}" %></h4>
+            
 
   </div>
 
   
     <div class="col-sm-12 profile-nav" >
     <ul class="nav nav-tabs nav-justified">
-      <li class="active"><a class="left" data-toggle="tab" href="#home"><span class="count" >2</span><br>Upvoted</a></li>
+      <li class="active"><a class="left" data-toggle="tab" href="#home"><span class="count" ><%= @links.count %></span><br>Upvoted</a></li>
       <li><a class="right" data-toggle="tab" href="#menu1"> <span class="count" >2</span><br>Submitted</a></li>
     </ul>
       
@@ -37,7 +38,7 @@
 
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-    <% 5.times do %>
+    <% @links.each do | link | %>
     <div class="link-item" >
       <div class="row">
         <div class="col-xs-1"> </div>
@@ -50,38 +51,24 @@
             </a>
         </div>
         <div class="col-xs-7">
-          <a class="link-item-title" href="">Title will go here</a>
-          <span class="link-item-tagline" >Tagline Will Sureley Go Here</span>
+          <a class="link-item-title" href="<%= link.url %>"><%= link.title %></a>
+          <span class="link-item-tagline" ><%= link.subtitle %></span>
         </div>
-        <div class="col-xs-1"><span class="image" ><%= image_tag "guy.jpg", width: "40px;", height: "40px;" %></span></div>
-        <div class="col-xs-2" > <span class="comment-count" ><span class=" glyphicon glyphicon-comment" > </span> 8</span> </div>
-        <!-- <div class="col-xs-1"> <span class="comment-count" >8</span> </div> -->
-       
+        <div class="col-xs-1"><%= link_to(link.user.handle) do %>
+
+          <span class="image"> <%= image_tag link.user.image, width: "40px;", height: "40px;" %></span>
+        <% end %>
       </div>
-      
+
+      <div class="col-xs-2">
+        <%= link_to(link) do %>
+        <span class="comment-count"><span class="glyphicon glyphicon-comment"></span>
+        <%= link.comments.count %></span>
+        <% end %>
     </div>
-    <% end %>
   </div>
-  <div id="menu1" class="tab-pane fade">
-    <% 5.times do %>
-    <div class="link-item" >
-      <div class="row">
-        <div class="col-xs-1"> </div>
-        <div class="col-xs-1">
-            <a class="upvote" href="#" >
-              <span class="upvote-button" >
-              <span class="glyphicon glyphicon-chevron-up" ></span>
-              </span> 
-              <span class="upvote-count" >32</span>
-            </a>
-        </div>
-        <div class="col-xs-7">
-          <a class="link-item-title" href="">Title will go here</a>
-          <span class="link-item-tagline" >Tagline Will Sureley Go Here</span>
-        </div>
-        <div class="col-xs-1"><span class="image" ><%= image_tag "guy.jpg", width: "40px;", height: "40px;" %></span></div>
-        <div class="col-xs-2" > <span class="comment-count" ><span class=" glyphicon glyphicon-comment" > </span> 8</span> </div>
-        <!-- <div class="col-xs-1"> <span class="comment-count" >8</span> </div> -->
+ 
+  
        
       </div>
       
@@ -89,10 +76,6 @@
     <% end %>
   </div>
   
-</div>
-    
-  </div>
-  
-</div>
+
 
 

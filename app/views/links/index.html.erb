@@ -18,11 +18,11 @@
       <div class="row">
         <div class="col-xs-1"> </div>
         <div class="col-xs-1">
-            <a class="upvote" href="#" >
+            <a class="upvote" href="<%= link_upvote_path(link) %>" >
               <span class="upvote-button" >
               <span class="glyphicon glyphicon-chevron-up" ></span>
               </span> 
-              <span class="upvote-count" >32</span>
+              <span class="upvote-count" ><%= link.get_upvotes.size %></span>
             </a>
         </div>
         <div class="col-xs-7">

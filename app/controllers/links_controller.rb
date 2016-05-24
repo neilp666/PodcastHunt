@@ -18,6 +18,12 @@ class LinksController < ApplicationController
     @link = current_user.links.build
   end
 
+  def upvote
+    @link = Link.find(params[:id])
+    @link.vote_by voter: current_user, :vote => 'upvote'
+    redirect_to :back
+  end
+
   # GET /links/1/edit
   def edit
   end

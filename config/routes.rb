@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "/:handle", to: "profiles#show"
 
   resources :links do
+    member do
+      get 'likes', to: "link#upvote"
+  end
     resources :comments 
   end
   get 'designs/home'
